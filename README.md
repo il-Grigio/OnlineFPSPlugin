@@ -1,6 +1,6 @@
 # Multiplayer Plugin for Unreal Engine (C++)
 
-Welcome to the Multiplayer Plugin for Unreal Engine! This plugin provides a comprehensive framework for implementing multiplayer functionality in your Unreal Engine projects. Whether you're creating a competitive multiplayer game or a cooperative multiplayer experience, this plugin has got you covered.
+Welcome to the Multiplayer Plugin for Unreal Engine 5+! This plugin provides a comprehensive framework for implementing multiplayer functionality in your Unreal Engine projects. Whether you're creating a competitive multiplayer game or a cooperative multiplayer experience, this plugin has got you covered.
 
 ## Features
 
@@ -26,11 +26,36 @@ To use the Multiplayer Plugin in your Unreal Engine project, follow these steps:
 
 4. Enable the Multiplayer Plugin in the Plugins section of the editor.
 
-5. Configure the plugin settings according to your game's requirements, including the Steam integration settings.
+5. Enable the online subsystem Steam plugin: Edit -> Plugins -> Online Subsystem Steam -> Enabled = true.
 
-6. Implement the necessary interfaces and extend the provided classes to integrate multiplayer functionality into your game.
+6. Restart Unreal
 
-7. Build and run your game to test the multiplayer features.
+7. Open Config foulder, change DefaultEngine.ini by adding the finished settings in https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Online/Steam/
+
+8. Open DefaultGame.ini and add:
+
+   ```
+   [/Scripts/Engine.GameSession]
+   MaxPlayers=100
+   ```
+   
+9. Build solution in Visual Studio
+
+10. Regenerate the project files, remember to delete Binaries, Intermediate, Saved, Plugins/MultiplayerSessions/Binaries and Plugins/MultiplayerSessions/Intermediate first.
+
+11. Open Settings in the Content Browsere and click Show Plugin Content, to see the plugin.
+
+12. Open the level blueprint, and Create Widget of class WBP_Menu in BeginPlay, attach to it the blueprint Menu Setup.
+
+13. Set the lobby level map path in the blueprint (Create one if needed).
+
+14. Add the Third Person Template if not yet added.
+
+15. Open the lobby level, and override the GameMode with ThirdPersonGameMode.
+
+16. Open Steam
+
+17. Build and run your game on different PCs with different Steam accounts and with the same Steam Download Reagion (settings -> Downloads) to test the multiplayer features.
 
 ## Steam Integration
 
